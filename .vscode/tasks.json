@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "command": "npm run start",
+            "label": "run",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "group": "test",
+            "command": "npm run test",
+            "label": "test",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "group": "test",
+            "command": "npm run prisma:studio",
+            "label": "prisma: studio",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "command": "npm run prisma:migrate",
+            "label": "prisma: migrate",
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
+            "group": "build",
+            "command": "npm run prisma:push",
+            "label": "prisma: push",
+            "problemMatcher": []
+        }
+    ]
+}

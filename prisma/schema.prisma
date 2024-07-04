@@ -1,0 +1,56 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+generator json {
+    provider = "prisma-json-types-generator"
+}
+
+generator erd {
+    provider = "prisma-erd-generator"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("MYSQL_URL")
+}
+
+enum ActiveStatus {
+    ACTIVE
+    INACTIVE
+}
+
+enum ProcessingStatus {
+    UNLOCKED
+    LOCKED
+}
+
+model Module {
+    id         Int          @id @default(autoincrement())
+    name       String
+    Permission Permission[]
+}
+
+model Role {
+    id          Int          @id @default(autoincrement())
+    name        String
+    permissions Permission[]
+    users       User[]
+}
+
+model Permission {
+    id       Int    @id @default(autoincrement())
+    module   Module @relation(fields: [moduleId], references: [id])
+    moduleId Int
+    role     Role   @relation(fields: [roleId], references: [id])
+    roleId   Int
+    value    String @db.Char(4)
+}
+
+model User {
+    id     Int          @id @default(autoincrement())
+    mobile String       @unique
+    role   Role         @relation(fields: [roleId], references: [id])
+    roleId Int
+    status ActiveStatus
+}
