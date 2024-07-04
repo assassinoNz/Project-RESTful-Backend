@@ -1,4 +1,4 @@
-# Smart POS System
+# Type-Safe, Fast and Collaborative Development Workflow with Node.js + Express.js
 
 ## Prerequisites
 - MySQL (Tested on 8.0.35)
